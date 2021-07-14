@@ -1,4 +1,4 @@
-#Variables de entorno
+# Variables de entorno
 Hay que crear un archivo en la raíz del proyecto que se llame .env
 luego tomar copiar el contenido que se encuentra en .env.example
 y colocarlo dentro de .env luego completar las variables de entorno
