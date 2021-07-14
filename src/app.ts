@@ -1,4 +1,6 @@
 require('dotenv').config();
+import 'module-alias/register';
+import 'source-map-support/register';
 import express from 'express';
 import mongoose from './services/mongoose';
 import { v1 } from './routes';

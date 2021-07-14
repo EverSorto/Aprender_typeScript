@@ -1,13 +1,19 @@
 {
 	"compilerOptions": {
 		"module": "commonjs",
-		"baseUrl": "./src",
+		"baseUrl": ".",
 		"esModuleInterop": true,
 		"target": "es6",
 		"moduleResolution": "node",
 		"sourceMap": true,
 		"outDir": "dist",
-		"typeRoots" : ["./node_modules/@types", "@types"]
+		"typeRoots" : ["./node_modules/@types", "@types"],
+		"paths": {
+			"models/*": ["src/models/*"],
+			"routes/*": ["src/routes/*"],
+			"services/*": ["src/services/*"],
+			"utils/*": ["src/utils/*"]
+		}
 	},
 	"include": [
 		"./src"

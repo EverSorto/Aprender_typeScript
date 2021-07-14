@@ -23,8 +23,16 @@
 		"eslint": "7.x.x",
 		"eslint-config-airbnb-typescript": "12.x.x",
 		"eslint-plugin-import": "2.x.x",
+		"module-alias": "^2.2.2",
 		"prettier": "2.x.x",
+		"source-map-support": "^0.5.19",
 		"tsc-watch": "4.x.x",
 		"typescript": "4.x.x"
+	},
+	"_moduleAliases": {
+		"models": "dist/models",
+		"routes": "dist/routes",
+		"services": "dist/services",
+		"utils": "dist/utils"
 	}
 }
