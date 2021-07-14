@@ -3,7 +3,7 @@ import { createTodo, getAllTodos } from './todo.controller';
 
 const router = Router();
 
-// get and post function
+// get and post function https://expressjs.com/es/4x/api.html#router.route
 router.route('/')
 	.get(getAllTodos)
 	.post(createTodo);

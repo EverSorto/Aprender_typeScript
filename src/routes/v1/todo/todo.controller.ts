@@ -1,5 +1,5 @@
-import { verifyTodoFields } from '../../../utils/verifyTodoFields';
-import TodoModel from '../../../models/Todo.model';
+import { verifyTodoFields } from 'utils/verifyTodoFields';
+import TodoModel from 'models/Todo.model';
 
 export const getAllTodos = async (req, res) => {
 	try {
