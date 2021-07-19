@@ -1,5 +1,8 @@
 interface ITodo {
 	title?: string;
+	description?:string, 
+	initTime?:Date,
+	lastTime?:Date
 }
 
 export const verifyTodoFields = (body: ITodo) => {

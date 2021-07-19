@@ -57,5 +57,30 @@ export const todoDeleteOne = async (req, res) => {
 			message: "todo not exits",
 			error
 		})
-	}    
+	}
+}
+
+
+export const modifyTodo = async (req, res) => {
+	const { body} = req;
+	const {id} = body
+	const { isValid, message } = verifyTodoFields(body);
+
+	// se verifica nuevamente que los campos estan correctos 
+	if (!isValid) {
+		return res.status(422).json({
+			message,
+		});
+	}
+
+	try {
+		const modify = await TodoModel.updateOne({_id:id},body);
+		const buscar = await TodoModel.find({_id: id})
+		res.status(200).json({buscar})
+	} catch (error) {
+		res.status(500).json({
+			message:"Error al modificar la tarea",
+			error,
+		})
+	}
 }
