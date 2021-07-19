@@ -25,7 +25,7 @@ export const createTodo = async (req, res) => {
 	}
 
 	const todo = new TodoModel(body);
-	return todo.save(function(err, document) {
+	return todo.save(function (err, document) {
 		if (err) {
 			return res.status(500).json({
 				message: err?.message,
@@ -36,3 +36,26 @@ export const createTodo = async (req, res) => {
 		return res.status(201).json(document);
 	});
 };
+
+// inicio con el delete 
+/**
+ * mongoose deleteOne
+ * @see https://mongoosejs.com/docs/api.html#query_Query-deleteOne 
+ * uso de comodines como paramtros 
+ * @see http://expressjs.com/es/api.html#res.app
+ */
+
+export const todoDeleteOne = async (req, res) => {
+	const { id } = req.body;
+	try {
+		const resultado = await TodoModel.deleteOne({ _id: id })
+		res.status(200).json({
+			resultado
+		})
+	} catch (error) {
+		res.status(500).json({
+			message: "todo not exits",
+			error
+		})
+	}    
+}
