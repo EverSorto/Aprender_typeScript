@@ -45,8 +45,12 @@ export const createTodo = async (req, res) => {
  * @see http://expressjs.com/es/api.html#res.app
  */
 
-export const DeleteOneTodo = async (req, res) => {
-	const { id } = req.body;
+export const deleteOneTodo = async (req, res) => {
+	const { params } = req;
+	const { id } = params;
+	if(!id) {
+		return res.status(500).json({message: "id is undefined or null"})
+	}
 	try {
 		const resultado = await TodoModel.deleteOne({ _id: id })
 		res.status(200).json({
@@ -62,9 +66,9 @@ export const DeleteOneTodo = async (req, res) => {
 
 
 export const todoUpdateOne = async (req, res) => {
-	const { body} = req;
-	const {id} = body
-	const { isValid, message } = verifyTodoFields(body);
+	const { body } = req;
+	const { id } = body
+	onst { isValid, message } = verifyTodoFields(body);
 
 	// se verifica nuevamente que los campos estan correctos 
 	if (!isValid) {
@@ -74,12 +78,12 @@ export const todoUpdateOne = async (req, res) => {
 	}
 
 	try {
-		const modify = await TodoModel.updateOne({_id:id},body);
-		const buscar = await TodoModel.find({_id: id})
-		res.status(200).json({buscar})
+		const modify = await TodoModel.updateOne({ _id: id }, body);
+		const buscar = await TodoModel.find({ _id: id })
+		res.status(200).json({ buscar })
 	} catch (error) {
 		res.status(500).json({
-			message:"Error al modificar la tarea",
+			message: "Error al modificar la tarea",
 			error,
 		})
 	}
