@@ -45,7 +45,7 @@ export const createTodo = async (req, res) => {
  * @see http://expressjs.com/es/api.html#res.app
  */
 
-export const todoDeleteOne = async (req, res) => {
+export const DeleteOneTodo = async (req, res) => {
 	const { id } = req.body;
 	try {
 		const resultado = await TodoModel.deleteOne({ _id: id })
@@ -61,7 +61,7 @@ export const todoDeleteOne = async (req, res) => {
 }
 
 
-export const modifyTodo = async (req, res) => {
+export const todoUpdateOne = async (req, res) => {
 	const { body} = req;
 	const {id} = body
 	const { isValid, message } = verifyTodoFields(body);
