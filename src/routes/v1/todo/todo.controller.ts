@@ -48,8 +48,8 @@ export const createTodo = async (req, res) => {
 export const deleteOneTodo = async (req, res) => {
 	const { params } = req;
 	const { id } = params;
-	if(!id) {
-		return res.status(500).json({message: "id is undefined or null"})
+	if (!id) {
+		return res.status(500).json({ message: "id is undefined or null" })
 	}
 	try {
 		const resultado = await TodoModel.deleteOne({ _id: id })
@@ -66,21 +66,23 @@ export const deleteOneTodo = async (req, res) => {
 
 
 export const todoUpdateOne = async (req, res) => {
-	const { body } = req;
-	const { id } = body
-	onst { isValid, message } = verifyTodoFields(body);
+	const { params } = req;
+	const { id, title, description, initTime, lastTime } = params;
 
 	// se verifica nuevamente que los campos estan correctos 
-	if (!isValid) {
-		return res.status(422).json({
-			message,
-		});
-	}
-
+	console.log(id, title, description, initTime, lastTime)
 	try {
-		const modify = await TodoModel.updateOne({ _id: id }, body);
-		const buscar = await TodoModel.find({ _id: id })
-		res.status(200).json({ buscar })
+		const modify = await TodoModel.updateOne({ _id: id }, {
+			title,
+			description,
+			initTime,
+			lastTime
+		});
+
+
+
+
+		res.status(200).json({ modify })
 	} catch (error) {
 		res.status(500).json({
 			message: "Error al modificar la tarea",
