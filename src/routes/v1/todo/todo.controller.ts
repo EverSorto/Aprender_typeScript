@@ -79,9 +79,6 @@ export const todoUpdateOne = async (req, res) => {
 			lastTime
 		});
 
-
-
-
 		res.status(200).json({ modify })
 	} catch (error) {
 		res.status(500).json({
